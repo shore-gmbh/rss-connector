@@ -1,5 +1,6 @@
 require 'active_support/all'
 require_relative 'rss/config'
+require_relative 'rss/rule'
 
 module RSS #:nodoc:
   # Authentication credentials are stored in constants, make sure
