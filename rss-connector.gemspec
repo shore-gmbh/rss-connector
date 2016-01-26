@@ -10,19 +10,14 @@ Gem::Specification.new do |spec|
   spec.email         = ['dylan.johnston@shore.com']
 
   spec.summary       = 'Connector for RSS'
-  spec.description   = 'Easy access to the Recurrence Service Store and its data.'
+  spec.description   = 'Easy access to RSS and its data.'
   spec.homepage      = 'shore.com'
   spec.license       = 'Proprietary'
 
-  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
-  # delete this section to allow pushing this gem to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = 'TODO: Set to a private GEM host\''
-  else
-    raise 'RubyGems 2.0 or newer is required to protect against public gem pushes.'
+  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|spec|features)/})
   end
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
