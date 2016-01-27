@@ -1,5 +1,6 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'rss'
+require 'pry'
 require 'securerandom'
 
 Time.zone = 'Europe/Berlin'
