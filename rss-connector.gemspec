@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Connector for RSS'
   spec.description   = 'Easy access to RSS and its data.'
-  spec.homepage      = 'shore.com'
+  spec.homepage      = 'http://shore.com'
   spec.license       = 'Proprietary'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
