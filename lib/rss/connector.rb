@@ -1,15 +1,14 @@
-require 'active_support/all'
 require 'httparty'
 require 'net/http'
-# Utility class encapsulating synchronous communication with RSS.
-#
-# @see https://rss.shore.com/docs (RSS API contract).
+
 module RSS
+  # Utility class encapsulating synchronous communication with RSS.
   class Connector # rubocop:disable ClassLength
     include HTTParty
-    base_uri(ENV['RECURRENCE_STORE_BASE_URI'])
 
-    BASIC_AUTH_USERNAME    = (ENV['RECURRENCE_STORE_SECRET'] || 'secret').freeze
+    base_uri RSS.configuration.base_uri
+
+    BASIC_AUTH_USERNAME    = (RSS.configuration.secret || 'secret').freeze
     BASIC_AUTH_PASSWORD    = ''.freeze
     BASIC_AUTH_CREDENTIALS = {
       basic_auth: {
@@ -234,7 +233,8 @@ module RSS
 
     private
 
-    # Define variants of all HTTParty request methods with authentication support.
+    # Define variants of all HTTParty request methods with authentication
+    # support.
     self::Request::SupportedHTTPMethods
       .map { |x| x.name.demodulize.downcase }.each do |method|
       define_singleton_method("authenticated_#{method}") do |path, options = {}|
