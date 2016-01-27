@@ -6,7 +6,6 @@ before_install: gem install bundler -v 1.10.6
 language: ruby
 script:
   - bundle exec rubocop
-  - bundle exec rake db:migrate
   - bundle exec rspec
 
 branches:
